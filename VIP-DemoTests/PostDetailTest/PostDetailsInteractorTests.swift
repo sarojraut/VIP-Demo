@@ -46,7 +46,7 @@ class PostDetailsInteractorTests: XCTestCase
   {
     let presenterSpy = PostDetailsPresentationLogicSpy()
     sut.presenter = presenterSpy
-    let worker = DetailsWorkerSpy()
+    let worker = PostDetailsWorker()
     sut.worker = worker
     sut.fetchPosts(request: PostDetails.Post.Request())
     let expectations = expectation(description: "The api request is successful")
@@ -64,41 +64,6 @@ class PostDetailsInteractorTests: XCTestCase
         }
     })
   }
-}
-
-
-final class DetailsWorkerSpy: PostDetailsWorker {
-
-    var fetchPostsCalled = false
-
-    var fetchError = false
-
-    enum AlbumsWorkerSpyError: Error {
-
-        case generic
-    }
-
-
-    override func fetchPosts(completion: @escaping ([PostDetails.Post.Response]?, Error?) -> ()) {
-        fetchPostsCalled = true
-        let presenterSpy = PostDetailsPresentationLogicSpy()
-
-        guard let publicUrl = URL(string: APPURL.BaseURL + APPURL.UrlCollection.UserDetailUrl.UserPosts) else { return }
-        URLSession.shared.dataTask(with: publicUrl) { (data, response
-            , error) in
-            guard let data = data else { return }
-            do {
-                let decoder = JSONDecoder()
-                let publicData = try decoder.decode([PostDetails.Post.Response].self, from: data)
-                
-                completion(publicData,nil)
-               
-            } catch let err {
-                completion(nil,err)
-            }
-        }.resume()
-        
-    }
 }
 
 
