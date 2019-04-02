@@ -58,7 +58,6 @@ class PostDetailsPresenterTests: XCTestCase
     // Given
     let spy = PostDetailsDisplayLogicSpy()
     sut.viewController = spy
-    let response = PostDetails.Post.Response()
     
     // When
     sut.presentPosts()

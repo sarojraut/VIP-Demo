@@ -18,7 +18,7 @@ class PostDetailsInteractorTests: XCTestCase
   // MARK: Subject under test
   
   var sut: PostDetailsInteractor!
-  
+
   // MARK: Test lifecycle
   
   override func setUp()
@@ -41,34 +41,27 @@ class PostDetailsInteractorTests: XCTestCase
   
   // MARK: Test doubles
   
-  class PostDetailsPresentationLogicSpy: PostDetailsPresentationLogic
-  {
-    var presentSomethingCalled = false
-    
-    func presentPosts() {
-        
-      presentSomethingCalled = true
-    }
-  }
+  
   
   // MARK: Tests
   
   func testfetchPosts()
   {
-    // Given
-    let spy = PostDetailsPresentationLogicSpy()
-    sut.presenter = spy
-    let request = PostDetails.Post.Request()
-    
-    // When
-    sut.fetchPosts(request: request)
+    let presenterSpy = PostDetailsPresentationLogicSpy()
+    sut.presenter = presenterSpy
+    let worker = DetailsWorkerSpy()
+    sut.worker = worker
+    sut.fetchPosts(request: PostDetails.Post.Request())
+    let expectations = expectation(description: "The api request is successful")
+
+    worker.fetchPosts(completion: {response,error in
+       expectations.fulfill()
+    })
     waitForExpectations(timeout: 30, handler: { (error) in
         if let error = error {
             print("Failed : \(error.localizedDescription)")
         }
     })
-    // Then
-    XCTAssertTrue(spy.presentSomethingCalled, "doSomething(request:) should ask the presenter to format the result")
   }
 }
 
@@ -84,16 +77,36 @@ final class DetailsWorkerSpy: PostDetailsWorker {
         case generic
     }
 
+
+
     override func fetchPosts(completion: @escaping ([PostDetails.Post.Response]?, Error?) -> ()) {
         fetchPostsCalled = true
 
-        if fetchError {
-
-            completion([], AlbumsWorkerSpyError.generic)
-
-        } else {
-
-            completion([], nil)
-        }
+        guard let publicUrl = URL(string: APPURL.BaseURL + APPURL.UrlCollection.UserDetailUrl.UserPosts) else { return }
+        URLSession.shared.dataTask(with: publicUrl) { (data, response
+            , error) in
+            guard let data = data else { return }
+            do {
+                let decoder = JSONDecoder()
+                let publicData = try decoder.decode([PostDetails.Post.Response].self, from: data)
+                
+                completion(publicData,nil)
+            } catch let err {
+                print("Err", err)
+                completion(nil,err)
+            }
+        }.resume()
+        
     }
 }
+
+
+    class PostDetailsPresentationLogicSpy: PostDetailsPresentationLogic
+    {
+        var presentSomethingCalled = false
+
+        func presentPosts() {
+
+            presentSomethingCalled = true
+        }
+    }
