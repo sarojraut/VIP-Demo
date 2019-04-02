@@ -10,12 +10,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "VIP-DemoTests/PostDetailTest/PostDetailsWorkerTests.swift"
-            timestampString = "575878263.1991349"
+            timestampString = "575878953.245613"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "52"
             endingLineNumber = "52"
-            landmarkName = "testSomething()"
+            landmarkName = "testfetchPosts(completion:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

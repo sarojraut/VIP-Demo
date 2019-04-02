@@ -53,7 +53,7 @@ class PostDetailsPresenterTests: XCTestCase
   
   // MARK: Tests
   
-  func testPresentSomething()
+  func testPresentPosts()
   {
     // Given
     let spy = PostDetailsDisplayLogicSpy()
