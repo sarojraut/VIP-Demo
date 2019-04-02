@@ -39,9 +39,7 @@ class PostDetailsViewControllerTests: XCTestCase
   
   func setupPostDetailsViewController()
   {
-    let bundle = Bundle.main
-    let storyboard = UIStoryboard(name: "Main", bundle: bundle)
-    sut = storyboard.instantiateViewController(withIdentifier: "PostDetailsViewController") as! PostDetailsViewController
+    sut = PostDetailsViewController()
   }
   
   func loadView()
@@ -64,12 +62,12 @@ class PostDetailsViewControllerTests: XCTestCase
   
   // MARK: Tests
   
-  func testShouldDoSomethingWhenViewIsLoaded()
+  func testfetchPosts()
   {
     // Given
     let spy = PostDetailsBusinessLogicSpy()
     sut.interactor = spy
-    
+    sut.interactor?.fetchPosts(request: PostDetails.Post.Request())
     // When
     loadView()
     
@@ -77,7 +75,7 @@ class PostDetailsViewControllerTests: XCTestCase
     XCTAssertTrue(spy.doSomethingCalled, "viewDidLoad() should ask the interactor to do something")
   }
   
-  func testDisplaySomething()
+  func testdisplayPosts()
   {
     
     loadView()

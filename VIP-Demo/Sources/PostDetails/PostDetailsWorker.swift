@@ -23,7 +23,7 @@ class PostDetailsWorker
         do {
             let decoder = JSONDecoder()
             let publicData = try decoder.decode([PostDetails.Post.Response].self, from: data)
-            print(publicData[0].title)
+            
             completion(publicData,nil)
         } catch let err {
             print("Err", err)

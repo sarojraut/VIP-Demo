@@ -43,9 +43,16 @@ class PostDetailsWorkerTests: XCTestCase
   
   // MARK: Tests
   
-  func testSomething()
+  func testfetchPosts(completion: @escaping ([PostDetails.Post.Response]?, Error?) -> ())
   {
-    // Given
+    
+    // When
+    
+    sut.fetchPosts { (response, error) in
+        
+    }
+    
+    // Then
     
     // When
     

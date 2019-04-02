@@ -23,7 +23,6 @@ class PostDetailsViewController: UITableViewController, PostDetailsDisplayLogic
   var router: (NSObjectProtocol & PostDetailsRoutingLogic & PostDetailsDataPassing)?
 
   // MARK: Setup
-  
   private func setup()
   {
     let viewController = self
@@ -40,7 +39,6 @@ class PostDetailsViewController: UITableViewController, PostDetailsDisplayLogic
   }
     
   // MARK: View lifecycle
-  
   override func viewDidLoad()
   {
     super.viewDidLoad()
@@ -66,7 +64,6 @@ class PostDetailsViewController: UITableViewController, PostDetailsDisplayLogic
         self.tableView.reloadData()
     }
   }
-    
 }
 
 extension PostDetailsViewController{
@@ -81,6 +78,4 @@ extension PostDetailsViewController{
         cell.setUpData(data: (self.router?.dataStore?.posts[indexPath.row])!)
         return cell
     }
-    
-    
 }

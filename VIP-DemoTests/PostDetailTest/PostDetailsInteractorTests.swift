@@ -53,7 +53,7 @@ class PostDetailsInteractorTests: XCTestCase
   
   // MARK: Tests
   
-  func testDoSomething()
+  func testfetchPosts()
   {
     // Given
     let spy = PostDetailsPresentationLogicSpy()
@@ -66,4 +66,30 @@ class PostDetailsInteractorTests: XCTestCase
     // Then
     XCTAssertTrue(spy.presentSomethingCalled, "doSomething(request:) should ask the presenter to format the result")
   }
+}
+
+
+final class DetailsWorkerSpy: PostDetailsWorker {
+    
+    var fetchPostsCalled = false
+    
+    var fetchError = false
+    
+    enum AlbumsWorkerSpyError: Error {
+        
+        case generic
+    }
+    
+    override func fetchPosts(completion: @escaping ([PostDetails.Post.Response]?, Error?) -> ()) {
+        fetchPostsCalled = true
+        
+        if fetchError {
+            
+            completion([], AlbumsWorkerSpyError.generic)
+            
+        } else {
+            
+            completion([], nil)
+        }
+    }
 }
