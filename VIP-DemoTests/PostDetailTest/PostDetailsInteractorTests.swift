@@ -52,8 +52,11 @@ class PostDetailsInteractorTests: XCTestCase
     let expectations = expectation(description: "The api request is successful")
     worker.fetchPosts(completion: {response,error in
         XCTAssertNil(error, "Api request return some error")
-        XCTAssertTrue(presenterSpy.presentPostsCalled, "fetchPosts() should ask the presenter to present the post")
         expectations.fulfill()
+        //since presenter need some time to present view just after receiving response
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+            XCTAssertTrue(presenterSpy.presentPostsCalled, "fetchPosts() should ask the presenter to present the post")
+        }
     })
     waitForExpectations(timeout: 30, handler: { (error) in
         if let error = error {
@@ -78,6 +81,7 @@ final class DetailsWorkerSpy: PostDetailsWorker {
 
     override func fetchPosts(completion: @escaping ([PostDetails.Post.Response]?, Error?) -> ()) {
         fetchPostsCalled = true
+        let presenterSpy = PostDetailsPresentationLogicSpy()
 
         guard let publicUrl = URL(string: APPURL.BaseURL + APPURL.UrlCollection.UserDetailUrl.UserPosts) else { return }
         URLSession.shared.dataTask(with: publicUrl) { (data, response
@@ -88,6 +92,7 @@ final class DetailsWorkerSpy: PostDetailsWorker {
                 let publicData = try decoder.decode([PostDetails.Post.Response].self, from: data)
                 
                 completion(publicData,nil)
+               
             } catch let err {
                 completion(nil,err)
             }
