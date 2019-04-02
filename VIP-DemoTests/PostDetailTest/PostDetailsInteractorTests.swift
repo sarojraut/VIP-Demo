@@ -53,9 +53,8 @@ class PostDetailsInteractorTests: XCTestCase
     sut.worker = worker
     sut.fetchPosts(request: PostDetails.Post.Request())
     let expectations = expectation(description: "The api request is successful")
-
     worker.fetchPosts(completion: {response,error in
-        XCTAssert(presenterSpy.presentPostsCalled, "fetchPosts() should ask the presenter to present the post")
+        XCTAssertTrue(presenterSpy.presentPostsCalled, "fetchPosts() should ask the presenter to present the post")
         expectations.fulfill()
     })
     waitForExpectations(timeout: 30, handler: { (error) in
