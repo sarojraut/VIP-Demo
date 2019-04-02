@@ -51,12 +51,13 @@ class PostDetailsInteractorTests: XCTestCase
     sut.fetchPosts(request: PostDetails.Post.Request())
     let expectations = expectation(description: "The api request is successful")
     worker.fetchPosts(completion: {response,error in
+        XCTAssertNil(error, "Api request return some error")
         XCTAssertTrue(presenterSpy.presentPostsCalled, "fetchPosts() should ask the presenter to present the post")
         expectations.fulfill()
     })
     waitForExpectations(timeout: 30, handler: { (error) in
         if let error = error {
-            print("Failed : \(error.localizedDescription)")
+            XCTAssertNil(error, "The api request does not give response")
         }
     })
   }
@@ -88,7 +89,6 @@ final class DetailsWorkerSpy: PostDetailsWorker {
                 
                 completion(publicData,nil)
             } catch let err {
-                print("Err", err)
                 completion(nil,err)
             }
         }.resume()

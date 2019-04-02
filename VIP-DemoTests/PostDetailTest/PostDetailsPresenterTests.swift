@@ -63,6 +63,6 @@ class PostDetailsPresenterTests: XCTestCase
     sut.presentPosts()
     
     // Then
-    XCTAssertTrue(spy.displayPostCalled, "presentSomething(response:) should ask the view controller to display the result")
+    XCTAssertTrue(spy.displayPostCalled, "PresentPosts() should ask the view controller to display the result")
   }
 }
