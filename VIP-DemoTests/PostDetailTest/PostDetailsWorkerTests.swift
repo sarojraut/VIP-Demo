@@ -43,7 +43,7 @@ class PostDetailsWorkerTests: XCTestCase
   
   // MARK: Tests
   
-  func testfetchPosts(completion: @escaping ([PostDetails.Post.Response]?, Error?) -> ())
+  func testfetchPosts()
   {
     
     // When

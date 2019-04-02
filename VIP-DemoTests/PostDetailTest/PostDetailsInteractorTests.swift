@@ -53,7 +53,7 @@ class PostDetailsInteractorTests: XCTestCase
   
   // MARK: Tests
   
-  func testfetchPosts(request: PostDetails.Post.Request)
+  func testfetchPosts()
   {
     // Given
     let spy = PostDetailsPresentationLogicSpy()
