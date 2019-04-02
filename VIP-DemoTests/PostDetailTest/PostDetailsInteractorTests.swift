@@ -55,7 +55,8 @@ class PostDetailsInteractorTests: XCTestCase
     let expectations = expectation(description: "The api request is successful")
 
     worker.fetchPosts(completion: {response,error in
-       expectations.fulfill()
+        XCTAssert(presenterSpy.presentPostsCalled, "fetchPosts() should ask the presenter to present the post")
+        expectations.fulfill()
     })
     waitForExpectations(timeout: 30, handler: { (error) in
         if let error = error {
@@ -103,10 +104,10 @@ final class DetailsWorkerSpy: PostDetailsWorker {
 
     class PostDetailsPresentationLogicSpy: PostDetailsPresentationLogic
     {
-        var presentSomethingCalled = false
+        var presentPostsCalled = false
 
         func presentPosts() {
 
-            presentSomethingCalled = true
+            presentPostsCalled = true
         }
     }
