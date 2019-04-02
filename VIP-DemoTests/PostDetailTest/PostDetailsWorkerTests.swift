@@ -39,23 +39,12 @@ class PostDetailsWorkerTests: XCTestCase
     sut = PostDetailsWorker()
   }
   
-  // MARK: Test doubles
-  
-  // MARK: Tests
   
   func testfetchPosts()
   {
     
-    // When
-    
     sut.fetchPosts { (response, error) in
         
     }
-    
-    // Then
-    
-    // When
-    
-    // Then
   }
 }

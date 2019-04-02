@@ -38,10 +38,7 @@ class PostDetailsInteractorTests: XCTestCase
   {
     sut = PostDetailsInteractor()
   }
-  
-  // MARK: Test doubles
-  
-  
+    
   
   // MARK: Tests
   
@@ -76,7 +73,6 @@ final class DetailsWorkerSpy: PostDetailsWorker {
 
         case generic
     }
-
 
 
     override func fetchPosts(completion: @escaping ([PostDetails.Post.Response]?, Error?) -> ()) {

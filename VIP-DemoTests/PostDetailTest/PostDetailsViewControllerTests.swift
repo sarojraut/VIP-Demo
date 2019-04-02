@@ -52,11 +52,11 @@ class PostDetailsViewControllerTests: XCTestCase
   
   class PostDetailsBusinessLogicSpy: PostDetailsBusinessLogic
   {
-    var doSomethingCalled = false
+    var fetchPostCalled = false
     
     func fetchPosts(request: PostDetails.Post.Request) {
     
-      doSomethingCalled = true
+      fetchPostCalled = true
     }
   }
   
@@ -72,7 +72,7 @@ class PostDetailsViewControllerTests: XCTestCase
     loadView()
     
     // Then
-    XCTAssertTrue(spy.doSomethingCalled, "viewDidLoad() should ask the interactor to do something")
+    XCTAssertTrue(spy.fetchPostCalled, "viewDidLoad() should ask the interactor to do something")
   }
   
   func testdisplayPosts()

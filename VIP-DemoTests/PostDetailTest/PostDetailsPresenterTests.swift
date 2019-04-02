@@ -43,11 +43,11 @@ class PostDetailsPresenterTests: XCTestCase
   
   class PostDetailsDisplayLogicSpy: PostDetailsDisplayLogic
   {
-    var displaySomethingCalled = false
+    var displayPostCalled = false
     
     func displayPosts()
     {
-      displaySomethingCalled = true
+      displayPostCalled = true
     }
   }
   
@@ -63,6 +63,6 @@ class PostDetailsPresenterTests: XCTestCase
     sut.presentPosts()
     
     // Then
-    XCTAssertTrue(spy.displaySomethingCalled, "presentSomething(response:) should ask the view controller to display the result")
+    XCTAssertTrue(spy.displayPostCalled, "presentSomething(response:) should ask the view controller to display the result")
   }
 }
