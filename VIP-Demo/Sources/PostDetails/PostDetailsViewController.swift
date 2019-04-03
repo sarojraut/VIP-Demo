@@ -42,7 +42,7 @@ class PostDetailsViewController: UITableViewController, PostDetailsDisplayLogic
   override func viewDidLoad()
   {
     super.viewDidLoad()
-     setup()
+    setup()
     self.tableView.register(PostDetailTVCell.self, forCellReuseIdentifier: "PostDetailTVCell")
     tableView.rowHeight = UITableView.automaticDimension
     tableView.estimatedRowHeight = 44

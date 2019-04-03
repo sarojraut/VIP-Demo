@@ -42,9 +42,20 @@ class PostDetailsWorkerTests: XCTestCase
   
   func testfetchPosts()
   {
-    
+    let expectations = expectation(description: "The Response result match the expected results")
+
     sut.fetchPosts { (response, error) in
-        
+        if response != nil{
+            if response?[0].userId == 1{
+                expectations.fulfill()
+            }
+        }
     }
+    
+    waitForExpectations(timeout: 20, handler: { (error) in
+        if let error = error {
+            XCTAssertNil(error, "The api request does not give response")
+        }
+    })
   }
 }

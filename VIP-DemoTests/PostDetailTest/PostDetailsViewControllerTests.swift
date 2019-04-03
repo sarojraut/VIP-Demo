@@ -81,7 +81,5 @@ class PostDetailsViewControllerTests: XCTestCase
     loadView()
     sut.displayPosts()
     
-    // Then
-    //XCTAssertEqual(sut.nameTextField.text, "", "displayPosts() should update the name text field")
   }
 }

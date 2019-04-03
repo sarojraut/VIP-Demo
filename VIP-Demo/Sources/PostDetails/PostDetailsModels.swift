@@ -29,7 +29,6 @@ enum PostDetails
         var id:Int?
         var title:String?
         var body:String?
-      
     }
   }
 }

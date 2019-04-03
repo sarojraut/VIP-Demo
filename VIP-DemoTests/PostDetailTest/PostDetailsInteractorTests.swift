@@ -48,13 +48,12 @@ class PostDetailsInteractorTests: XCTestCase
     sut.presenter = presenterSpy
     let worker = PostDetailsWorker()
     sut.worker = worker
-    sut.fetchPosts(request: PostDetails.Post.Request())
     let expectations = expectation(description: "The api request is successful")
     worker.fetchPosts(completion: {response,error in
         XCTAssertNil(error, "Api request return some error")
         expectations.fulfill()
-        //since presenter need some time to present view just after receiving response
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+        //since presenter need some time to present response just after receiving response
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1){
             XCTAssertTrue(presenterSpy.presentPostsCalled, "fetchPosts() should ask the presenter to present the post")
         }
     })
