@@ -66,12 +66,12 @@ class PostDetailsInteractorTests: XCTestCase
 }
 
 
-    class PostDetailsPresentationLogicSpy: PostDetailsPresentationLogic
-    {
-        var presentPostsCalled = false
+class PostDetailsPresentationLogicSpy: PostDetailsPresentationLogic{
+    
+    var presentPostsCalled = false
 
-        func presentPosts() {
+    func presentPosts() {
 
             presentPostsCalled = true
-        }
     }
+}

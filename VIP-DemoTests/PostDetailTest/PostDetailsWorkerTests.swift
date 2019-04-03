@@ -45,11 +45,8 @@ class PostDetailsWorkerTests: XCTestCase
     let expectations = expectation(description: "The Response result match the expected results")
 
     sut.fetchPosts { (response, error) in
-        if response != nil{
-            if response?[0].userId == 1{
-                expectations.fulfill()
-            }
-        }
+         XCTAssertEqual(response?[0].userId, 1)
+         expectations.fulfill()
     }
     
     waitForExpectations(timeout: 20, handler: { (error) in
