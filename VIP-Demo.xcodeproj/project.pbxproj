@@ -10,7 +10,6 @@
 		8406F4522251DBA2001B465D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8406F4512251DBA2001B465D /* AppDelegate.swift */; };
 		8406F4592251DBA5001B465D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8406F4582251DBA5001B465D /* Assets.xcassets */; };
 		8406F45C2251DBA5001B465D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8406F45A2251DBA5001B465D /* LaunchScreen.storyboard */; };
-		8406F4672251DBA5001B465D /* VIP_DemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8406F4662251DBA5001B465D /* VIP_DemoTests.swift */; };
 		8406F4722251DBA5001B465D /* VIP_DemoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8406F4712251DBA5001B465D /* VIP_DemoUITests.swift */; };
 		8406F4842251DFBD001B465D /* URLConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8406F4832251DFBD001B465D /* URLConstants.swift */; };
 		8406F4A2225201B3001B465D /* PostDetailsModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8406F49C225201B2001B465D /* PostDetailsModels.swift */; };
@@ -50,7 +49,6 @@
 		8406F45B2251DBA5001B465D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8406F45D2251DBA5001B465D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8406F4622251DBA5001B465D /* VIP-DemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "VIP-DemoTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		8406F4662251DBA5001B465D /* VIP_DemoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VIP_DemoTests.swift; sourceTree = "<group>"; };
 		8406F4682251DBA5001B465D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8406F46D2251DBA5001B465D /* VIP-DemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "VIP-DemoUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8406F4712251DBA5001B465D /* VIP_DemoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VIP_DemoUITests.swift; sourceTree = "<group>"; };
@@ -129,7 +127,6 @@
 		8406F4652251DBA5001B465D /* VIP-DemoTests */ = {
 			isa = PBXGroup;
 			children = (
-				8406F4662251DBA5001B465D /* VIP_DemoTests.swift */,
 				8406F4B5225235D0001B465D /* PostDetailTest */,
 				8406F4682251DBA5001B465D /* Info.plist */,
 			);
@@ -359,7 +356,6 @@
 			files = (
 				8406F4BC225237E3001B465D /* PostDetailsWorkerTests.swift in Sources */,
 				8406F4BD225237E3001B465D /* PostDetailsPresenterTests.swift in Sources */,
-				8406F4672251DBA5001B465D /* VIP_DemoTests.swift in Sources */,
 				8406F4BB225237E3001B465D /* PostDetailsInteractorTests.swift in Sources */,
 				8406F4BA225237E3001B465D /* PostDetailsViewControllerTests.swift in Sources */,
 			);

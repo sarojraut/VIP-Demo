@@ -38,7 +38,6 @@ class PostDetailsInteractorTests: XCTestCase
   {
     sut = PostDetailsInteractor()
   }
-    
   
   // MARK: Tests
   
@@ -48,6 +47,7 @@ class PostDetailsInteractorTests: XCTestCase
     sut.presenter = presenterSpy
     let worker = PostDetailsWorker()
     sut.worker = worker
+    sut.fetchPosts(request: PostDetails.Post.Request())
     let expectations = expectation(description: "The api request is successful")
     worker.fetchPosts(completion: {response,error in
         XCTAssertNil(error, "Api request return some error")
