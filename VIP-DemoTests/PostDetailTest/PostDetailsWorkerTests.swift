@@ -54,7 +54,7 @@ class PostDetailsWorkerTests: XCTestCase
     
     waitForExpectations(timeout: 20, handler: { (error) in
         if let error = error {
-            XCTAssertNil(error, "The api request does not give response")
+            XCTAssertNil(error, "The api request does not fullfill the expectaion")
         }
     })
   }

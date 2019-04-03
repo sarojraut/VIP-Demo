@@ -72,7 +72,7 @@ class PostDetailsViewControllerTests: XCTestCase
     loadView()
     
     // Then
-    XCTAssertTrue(spy.fetchPostCalled, "viewDidLoad() should ask the interactor to do something")
+    XCTAssertTrue(spy.fetchPostCalled, "viewDidLoad() should ask the interactor to do fetch posts")
   }
   
   func testdisplayPosts()
