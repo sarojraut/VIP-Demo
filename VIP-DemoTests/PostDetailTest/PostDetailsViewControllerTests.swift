@@ -67,7 +67,7 @@ class PostDetailsViewControllerTests: XCTestCase
     // Given
     let spy = PostDetailsBusinessLogicSpy()
     sut.interactor = spy
-    sut.interactor?.fetchPosts(request: PostDetails.Post.Request())
+    sut.fetchPosts()
     // When
     loadView()
     
