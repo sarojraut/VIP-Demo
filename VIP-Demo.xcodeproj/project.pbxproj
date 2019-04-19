@@ -23,6 +23,7 @@
 		8406F4BB225237E3001B465D /* PostDetailsInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8406F4B7225237E3001B465D /* PostDetailsInteractorTests.swift */; };
 		8406F4BC225237E3001B465D /* PostDetailsWorkerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8406F4B8225237E3001B465D /* PostDetailsWorkerTests.swift */; };
 		8406F4BD225237E3001B465D /* PostDetailsPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8406F4B9225237E3001B465D /* PostDetailsPresenterTests.swift */; };
+		846CB7A9225B671400955AA5 /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846CB7A8225B671400955AA5 /* SnapshotHelper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +66,7 @@
 		8406F4B7225237E3001B465D /* PostDetailsInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailsInteractorTests.swift; sourceTree = "<group>"; };
 		8406F4B8225237E3001B465D /* PostDetailsWorkerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailsWorkerTests.swift; sourceTree = "<group>"; };
 		8406F4B9225237E3001B465D /* PostDetailsPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailsPresenterTests.swift; sourceTree = "<group>"; };
+		846CB7A8225B671400955AA5 /* SnapshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SnapshotHelper.swift; path = fastlane/SnapshotHelper.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,6 +138,7 @@
 		8406F4702251DBA5001B465D /* VIP-DemoUITests */ = {
 			isa = PBXGroup;
 			children = (
+				846CB7A8225B671400955AA5 /* SnapshotHelper.swift */,
 				8406F4712251DBA5001B465D /* VIP_DemoUITests.swift */,
 				8406F4732251DBA5001B465D /* Info.plist */,
 			);
@@ -366,6 +369,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8406F4722251DBA5001B465D /* VIP_DemoUITests.swift in Sources */,
+				846CB7A9225B671400955AA5 /* SnapshotHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
