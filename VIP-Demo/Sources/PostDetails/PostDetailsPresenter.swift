@@ -1,5 +1,5 @@
 //
-//  PostDetailsPresenter.swift
+//  PostDetailsInteractor.swift
 //  VIP-Demo
 //
 //  Created by admin on 4/1/19.
@@ -12,19 +12,35 @@
 
 import UIKit
 
-protocol PostDetailsPresentationLogic
+protocol PostDetailsBusinessLogic
 {
-  func presentPosts()
+    func fetchPosts(request: PostDetails.Post.Request)
 }
 
-class PostDetailsPresenter: PostDetailsPresentationLogic
+protocol PostDetailsDataStore
 {
-  weak var viewController: PostDetailsDisplayLogic?
-  
-  // MARK: Do something
-  
-  func presentPosts()
-  {
-    viewController?.displayPosts()
-  }
+    
+}
+
+class PostDetailsInteractor: PostDetailsBusinessLogic, PostDetailsDataStore
+{
+    var posts: [PostFieldsViewModel] = []
+    var presenter: PostDetailsPresentationLogic?
+    var worker: PostDetailsWorker?
+    //var name: String = ""
+    
+    // MARK: Do something
+    
+    func fetchPosts(request: PostDetails.Post.Request)
+    {
+        worker = PostDetailsWorker()
+        worker?.fetchPosts(completion: { (response , error) in
+            if let responseData = response{
+                self.presenter?.presentPosts(response: responseData)
+            }else{
+                print("error")
+            }
+        })
+        
+    }
 }
