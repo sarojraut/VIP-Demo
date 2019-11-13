@@ -79,7 +79,7 @@ class PostDetailsViewControllerTests: XCTestCase
   {
     
     loadView()
-    sut.displayPosts()
+  //  sut.displayPosts(viewModel: [PostFieldsViewModel])
     
   }
 }

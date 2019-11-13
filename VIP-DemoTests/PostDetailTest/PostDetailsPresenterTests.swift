@@ -43,6 +43,10 @@ class PostDetailsPresenterTests: XCTestCase
   
   class PostDetailsDisplayLogicSpy: PostDetailsDisplayLogic
   {
+    func displayPosts(viewModel: [PostFieldsViewModel]) {
+        
+    }
+    
     var displayPostCalled = false
     
     func displayPosts()
@@ -60,7 +64,7 @@ class PostDetailsPresenterTests: XCTestCase
     sut.viewController = spy
     
     // When
-    sut.presentPosts()
+    //sut.presentPosts(response: [PostDetails.Post.Response])
     
     // Then
     XCTAssertTrue(spy.displayPostCalled, "PresentPosts() should ask the view controller to display the result")

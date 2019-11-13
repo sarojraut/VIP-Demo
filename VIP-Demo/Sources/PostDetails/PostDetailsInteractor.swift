@@ -19,12 +19,11 @@ protocol PostDetailsBusinessLogic
 
 protocol PostDetailsDataStore
 {
-  var posts: [PostFieldsViewModel] { get set }
+
 }
 
 class PostDetailsInteractor: PostDetailsBusinessLogic, PostDetailsDataStore
 {
-  var posts: [PostFieldsViewModel] = []
   var presenter: PostDetailsPresentationLogic?
   var worker: PostDetailsWorker?
   //var name: String = ""
@@ -36,11 +35,8 @@ class PostDetailsInteractor: PostDetailsBusinessLogic, PostDetailsDataStore
     worker = PostDetailsWorker()
     worker?.fetchPosts(completion: { (response , error) in
         if let responseData = response{
-            for value in responseData{
-                let model = PostFieldsViewModel(userImageUrl: value.id?.description ?? "" , title: value.title ?? ""  , description: value.body ?? "" )
-                self.posts.append(model)
-            }
-            self.presenter?.presentPosts()
+            
+            self.presenter?.presentPosts(response:responseData)
         }else{
             print("error")
         }

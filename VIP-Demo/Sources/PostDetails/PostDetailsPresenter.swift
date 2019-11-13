@@ -12,35 +12,24 @@
 
 import UIKit
 
-protocol PostDetailsBusinessLogic
+protocol PostDetailsPresentationLogic
 {
-    func fetchPosts(request: PostDetails.Post.Request)
+    func presentPosts(response:[PostDetails.Post.Response])
 }
 
-protocol PostDetailsDataStore
+class PostDetailsPresenter: PostDetailsPresentationLogic
 {
-    
-}
-
-class PostDetailsInteractor: PostDetailsBusinessLogic, PostDetailsDataStore
-{
-    var posts: [PostFieldsViewModel] = []
-    var presenter: PostDetailsPresentationLogic?
-    var worker: PostDetailsWorker?
-    //var name: String = ""
+    weak var viewController: PostDetailsDisplayLogic?
     
     // MARK: Do something
     
-    func fetchPosts(request: PostDetails.Post.Request)
+    func presentPosts(response:[PostDetails.Post.Response])
     {
-        worker = PostDetailsWorker()
-        worker?.fetchPosts(completion: { (response , error) in
-            if let responseData = response{
-                self.presenter?.presentPosts(response: responseData)
-            }else{
-                print("error")
-            }
-        })
-        
+        var posts: [PostFieldsViewModel] = []
+        for value in response{
+            let model = PostFieldsViewModel(userImageUrl: value.id?.description ?? "" , title: value.title ?? ""  , description: value.body ?? "" )
+            posts.append(model)
+        }
+        viewController?.displayPosts(viewModel: posts)
     }
 }
